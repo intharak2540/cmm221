@@ -1,52 +1,29 @@
-<!DOCTYPE html>
-<html lang="en"><!--make language to web-->
-<head>
-	<meta charset="UTF-8">
-	<title>CMM19</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-	<link rel="stylesheet" type="text/css" href="/assets/home.css">
-</head>
-<body>
+{% extends 'layout/base.twig' %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/assets/home.css">
+{% endblock %}
+
+{% block content %}
 	<!--COMMENT-->
-	<header>
-		<div class="has-text-centered">
-			<img src="/assets/images/logo.png" alt="" width="145" height="auto"><!--make logo markup-->
-		</div>
-		<nav class="navbar-tabs">
-			<a href="#" class="navbar-item">WORK</a>
-			<a href="#" class="navbar-item">INTERVIEW</a>
-			<a href="#" class="navbar-item">LIVING</a>
-			<a href="#" class="navbar-item">SOCLAL</a>
-			<a href="#" class="navbar-item">VIDEO</a>
-			<a href="#" class="navbar-item">ACTIVITIES</a>
-			<a href="#" class="navbar-item">GALLERY</a>
-			<a href="#" class="navbar-item">CONTACT</a>
-		</nav>
-	</header>
 
 	<main>
 		<section class="banner">
 			<div class="highlight">
 				<div class="columns">
-					<div class="column highlight-item">
-						<h1>Hello</h1>
+					<div class="column highlight-item" style="background-image: url({{
+						highlight.url}});">
+						<h1>{{ highlight.title }}</h1>
 					</div>
 				</div>
 			</div>
 			<div class="thumbnail">
 				<div class="columns is-marginless">
-					<div class="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-1.jpg);">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+					{% for item in thumbnail %}
+					<div class="column thumbnail-item " style="background-image: url({{ item.url }});">
+						{{ item.title}}
 					</div>
-					<div class="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-2.jpg);">
-						sed do eiusmod tempor incididunt
-					</div>
-					<div class="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-3.jpg);">
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-					</div>
-					<div class="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-4.jpg);">
-						Sed ut perspiciatis unde omnis
-					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</section >
@@ -172,5 +149,4 @@
 			</div>
 		</section>
 	</main>
-</body>
-</html>
+{% endblock %}
